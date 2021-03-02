@@ -17,10 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->text('content')->nullable();
-			$table->bigInteger('count')->unsigned()->nullable();
+            $table->string('url', 100)->unique();
+            $table->bigInteger('count')->unsigned()->nullable();
             $table->decimal('price', 10, 2, true)->default(0);
-			$table->bigInteger('category_id')->unsigned()->nullable();
-			$table->string('image', 50)->nullable();
+            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->string('image', 50)->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')

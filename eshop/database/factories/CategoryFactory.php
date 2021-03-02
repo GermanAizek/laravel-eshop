@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CategoryFactory extends Factory
@@ -37,9 +38,12 @@ class CategoryFactory extends Factory
 			'Наш отечественный бренд.'
 		];
 		
+		$name = $list_names[array_rand($list_names)];
+		
         return [
-            'name' => $list_names[array_rand($list_names)],
-			'content' => $list_contents[array_rand($list_contents)]
+            'name' => $name,
+			'content' => $list_contents[array_rand($list_contents)],
+			'url' => Str::slug($name.' '.random_int(0, 99999))
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
@@ -35,9 +36,12 @@ class ProductFactory extends Factory
 			'Продукт отличается износоустойчивостью и качеством бренда.'
 		];
 		
+		$name = $list_names[array_rand($list_names)];
+		
         return [
-			'name' => $list_names[array_rand($list_names)],
+			'name' => $name,
 			'content' => $list_contents[array_rand($list_contents)],
+			'url' => Str::slug($name.' '.random_int(0, 99999)),
 			'count' => random_int(0, 50),
 			'price' => random_int(500, 50000),
 			'category_id' => random_int(1, 4)
